@@ -43,28 +43,26 @@ public class servlet extends HttpServlet {
 			Statement stmt= con.createStatement();
 			
 			ResultSet rs=stmt.executeQuery("select * from data");
-		
-			 if (rs.next() == false) 
-			 {
-			      out.println("Please Sign Up First!!!");
-		     }
-			 else
-			 {
-				 while(rs.next())
+			
+			if(rs.next() == false)	//is database empty
+	 		{
+	 			out.println("Sign Up First");
+	 		}else
+	 		{
+	 			do {
+	 				if(u1.equals(rs.getString("USERNAME"))&& p1.equals(rs.getString("PASSWORD")))	//username is present in database
 					{
-
-						if(u1.equals(rs.getString("USERNAME"))&& p1.equals(rs.getString("PASSWORD")))
-						{
-							out.println("Welcome Developer "+u1);
-							
-						}
-						else
-						{
-							out.println("Login UnSuccessful");
-							break;
-						}
-					} 
-			 }
+						out.println("Welcome Developer "+u1);
+						
+					}
+					else
+					{
+						out.println("Login UnSuccessful");
+						break;
+					}
+	 			}while(rs.next());
+	 		}
+				 
 			
             out.close();
 		    stmt.close();

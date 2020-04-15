@@ -11,11 +11,11 @@
              var mob=/^[7-9][0-9]{9}$/
              var pass2=document.form2.password2.value;
              
-             if(mail.test(form2.email.value))
+             if(mail.test(form2.email.value)) //is valid email
          	{
-         		if(mob.test(form2.phno.value))
+         		if(mob.test(form2.phno.value)) //is valid phno
          			{
-         				if(pass2.length>=8)
+         				if(pass2.length>=8) //is password length >8
          					{
          						return true;
          					}
